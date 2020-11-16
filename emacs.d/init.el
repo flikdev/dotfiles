@@ -58,7 +58,7 @@
   :hook
   ((prog-mode yaml-mode) . highlight-indent-guides-mode)
   :custom
-  (highlight-indent-guides-auto-enabled t)
+  (highlight-indent-guides-auto-enabled nil) ;; t
   (highlight-indent-guides-responsive t)
   (highlight-indent-guides-method 'character)) ; column
 
@@ -109,17 +109,10 @@
   :init (global-whitespace-mode t))
 
 (use-package git-gutter
-  :custom
-  (git-gutter:modified-sign "~")
-  (git-gutter:added-sign    "+")
-  (git-gutter:deleted-sign  "-")
-  :custom-face
-  (git-gutter:modified ((t (:background "#f1fa8c"))))
-  (git-gutter:added    ((t (:background "#50fa7b"))))
-  (git-gutter:deleted  ((t (:background "#ff79c6"))))
   :config
-  (global-git-gutter-mode +1))
-(setq ad-redefinition-action 'accept)
+  (global-git-gutter-mode +1)
+  (setq ad-redefinition-action 'accept)  ;; vc_revert
+  :bind (("C-c g" . git-gutter:toggle)))
 
 ;;
 ;; language
@@ -128,7 +121,7 @@
   :mode ("\\.yml\\'" "\\.yaml\\'"))
 
 (use-package json-mode
-  :mode ("\\.json__'"))
+  :mode ("\\.json\\'"))
 
 (use-package dockerfile-mode
   :mode "\\Dockerfile\\'")
