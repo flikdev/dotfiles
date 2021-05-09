@@ -28,3 +28,5 @@ drm() { docker image rm $(docker image ls -aq); }
 dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)='\(.*\)'/\1 \t=> \2/"| sed "s/'\\\'//g"; }
 
 # source <(kubectl completion bash)
+
+alias t=terraform
