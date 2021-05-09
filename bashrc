@@ -29,4 +29,8 @@ dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)='\(.*\)'/\1 \t=> \2/"| sed 
 
 # source <(kubectl completion bash)
 
-alias t=terraform
+if type terraform &> /dev/null; then
+    complete -C /usr/local/bin/terraform t
+fi
+
+complete -C '/usr/local/bin/aws_completer' aws
