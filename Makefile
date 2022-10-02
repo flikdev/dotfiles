@@ -17,6 +17,5 @@ zsh:
 
 .PHONY: emacs
 emacs:
-	git clone --depth 1 https://github.com/seagle0128/.emacs.d.git $(PWD)/emacs.d
-	ln -vfs $(PWD)/emacs.d $(HOME)/.emacs.d
-	cp -rp $(PWD)/custom.el $(PWD)/emacs.d/custom.el
+	git clone --depth 1 https://github.com/seagle0128/.emacs.d.git $(HOME)/.emacs.d
+	cp -rp $(PWD)/custom.el $(HOME)/.emacs.d/custom.el
