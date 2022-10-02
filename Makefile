@@ -1,27 +1,22 @@
-CWD=$(shell pwd)
+PWD=$(shell pwd)
 DISTRO=$(shell uname)
 
-install:
-	make $(HOME)/.bashrc
-	make $(HOME)/.emacs.d
+.PHONY: all
+all: zsh emacs
 
-uninstall:
-	test -L $(HOME)/.bashrc && rm -vf $(HOME)/.bashrc
-	test -L $(HOME)/.emacs.d && rm -vrf $(HOME)/.emacs.d
-
-test:
-	mkdir test
-	make install HOME=$(CWD)/test
-	test -L $(CWD)/test/.bashrc
-	test -L $(CWD)/test/.emacs.d
-
+.PHONY: clean
 clean:
-	make uninstall HOME=$(CWD)/test
-	rm -r test
+	rm -vf $(HOME)/.zshrc
+	rm -vf $(HOME)/.zshenv
+	rm -vrf $(HOME)/.emacs.d
 
-$(HOME)/.bashrc:
-	ln -vs $(CWD)/bashrc $(HOME)/.bashrc
+.PHONY: zsh
+zsh:
+	ln -vfs $(PWD)/.zshrc $(HOME)/.zshrc
+	ln -vfs $(PWD)/.zshenv $(HOME)/.zshenv
 
-$(HOME)/.emacs.d:
-	git clone --depth 1 https://github.com/seagle0128/.emacs.d.git $(CWD)/emacs.d
-	ln -vs $(CWD)/emacs.d $(HOME)/.emacs.d
+.PHONY: emacs
+emacs:
+	git clone --depth 1 https://github.com/seagle0128/.emacs.d.git $(PWD)/emacs.d
+	ln -vfs $(PWD)/emacs.d $(HOME)/.emacs.d
+	cp -rp $(PWD)/custom.el $(PWD)/emacs.d/custom.el
