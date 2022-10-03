@@ -5,8 +5,7 @@ DOTFILES=$HOME/.dotfiles
 EMACSD=$HOME/.emacs.d
 
 ### alias
-alias python='/usr/local/bin/python3'
-alias pip='/usr/local/bin/pip3'
+alias re='exec $SHELL -l'
 alias ll='ls -alF'
 alias l='ls -GlFtrh'
 alias c='cp -rp'
@@ -33,6 +32,13 @@ alias gp='git push'
 alias s='screen'
 alias sl='screen -ls'
 alias sr='screen -r'
+
+alias python='/usr/local/bin/python3'
+alias pip='/usr/local/bin/pip3'
+alias pip-upgrade-all="pip list -o | tail -n +3 | awk '{ print \$1 }' | xargs pip install -U"
+
+alias awss3cp='aws s3 cp --recursive --exclude "*" --include'
+alias awsprofile='export AWS_DEFAULT_PROFILE'
 
 
 ### prompt
@@ -61,6 +67,9 @@ source ${HOME}'/google-cloud-sdk/path.zsh.inc'
 
 # The next line enables bash completion for gcloud.
 source ${HOME}'/google-cloud-sdk/completion.zsh.inc'
+
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
 
 # AWS
 complete -C '/usr/local/bin/aws_completer' aws

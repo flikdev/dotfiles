@@ -1,6 +1,7 @@
 # Zsh environment
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # export CLOUDSDK_PYTHON=$(which python2)
 
