@@ -4,13 +4,14 @@
 DOTFILES=$HOME/.dotfiles
 EMACSD=$HOME/.emacs.d
 
+
 ### alias
 alias re='exec $SHELL -l'
 alias ll='ls -alF'
 alias l='ls -GlFtrh'
 alias c='cp -rp'
 alias r='rm -rf'
-alias rge='ripgrep -e'
+alias rge='rg -e'
 
 alias e="emacs"
 alias mte="emacs -Q -nw -l $EMACSD/init-mini.el" # mini terminal
